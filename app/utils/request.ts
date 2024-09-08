@@ -30,18 +30,6 @@ instance.interceptors.request.use(
   }
 );
 
-const errorHandle = (status: number, other: string): void => {
-  switch (status) {
-    case 400:
-      error(other);
-      break;
-
-    default:
-      console.log(status, other);
-      error(`${status}: ${other}`);
-  }
-};
-
 // Add a response interceptor
 instance.interceptors.response.use(
   async (response) => {
@@ -55,10 +43,7 @@ instance.interceptors.response.use(
   async (error) => {
     // Do something with response error
     // error code message
-    errorHandle(
-      error.response.status as number,
-      error.response.data.message as string
-    );
+    console.log(error);
     return await Promise.reject(error);
   }
 );
