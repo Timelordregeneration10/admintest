@@ -12,39 +12,24 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaCircleStop } from "react-icons/fa6";
 import { MdRestartAlt } from "react-icons/md";
 import { VscDebugStart } from "react-icons/vsc";
 import ConfirmModal from "./confirmModal";
-import { testInstanceList } from "@/app/constants/testInstanceList";
 
 export default function MainPage({
+  InstanceList,
   admintestAuthorization,
 }: {
+  InstanceList: Array<EC2Instance>;
   admintestAuthorization: RequestCookie | undefined;
 }) {
-  const [instanceList, setInstanceList] = useState<Array<EC2Instance>>([]);
+  const [instanceList, setInstanceList] =
+    useState<Array<EC2Instance>>(InstanceList);
   const [title, setTitle] = useState("");
   const [currentInstanceId, setCurrentInstanceId] = useState("");
   const [currentOperation, setCurrentOperation] = useState("");
-
-  const getInstance = async () => {
-    if (process.env.NEXT_PUBLIC_TEST === "test") {
-      return setInstanceList(testInstanceList);
-    } else {
-      if (admintestAuthorization) {
-        const res = await API.getInstances(admintestAuthorization.value);
-        setInstanceList(res.data);
-      } else {
-        return [];
-      }
-    }
-  };
-
-  useEffect(() => {
-    getInstance();
-  }, []);
 
   const handlePutInstance = async () => {
     if (process.env.NEXT_PUBLIC_TEST === "test") {
