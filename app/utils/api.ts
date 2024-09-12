@@ -5,7 +5,7 @@ import { EC2Instance } from "../interfaces/instance";
 type getInstancesRes = Array<EC2Instance>;
 
 const getInstances = async (access_token: string) =>
-  await instance.get<any, AxiosResponse<Partial<getInstancesRes>>>(
+  instance.get<any, AxiosResponse<Partial<getInstancesRes>>>(
     `/ec2-instances`,
     { headers: { Authorization: access_token } }
   );

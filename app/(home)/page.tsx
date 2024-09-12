@@ -12,14 +12,8 @@ export default async function Home() {
       return testInstanceList;
     } else {
       if (admintestAuthorization) {
-        let instances: Array<EC2Instance> = [];
-        API.getInstances(admintestAuthorization.value).then((res) => {
-          if (res.status === 200) {
-            // @ts-ignore
-            if (res.data) instances = res.data;
-          }
-        });
-        return instances;
+        const res = await API.getInstances(admintestAuthorization.value);
+        return res.data;
       } else {
         return [];
       }
