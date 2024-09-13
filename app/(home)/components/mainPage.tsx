@@ -11,7 +11,6 @@ import {
   TableRow,
   useDisclosure,
 } from "@nextui-org/react";
-import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { useState } from "react";
 import { FaCircleStop } from "react-icons/fa6";
 import { MdRestartAlt } from "react-icons/md";
@@ -23,7 +22,7 @@ export default function MainPage({
   admintestAuthorization,
 }: {
   InstanceList: Array<EC2Instance>;
-  admintestAuthorization: RequestCookie | undefined;
+  admintestAuthorization: string;
 }) {
   const [instanceList, setInstanceList] =
     useState<Array<EC2Instance>>(InstanceList);
@@ -35,25 +34,24 @@ export default function MainPage({
     if (process.env.NEXT_PUBLIC_TEST === "test") {
       success(currentOperation + " " + currentInstanceId + " successfully !");
     } else {
-      if (admintestAuthorization)
-        API.putInstance(
-          currentInstanceId,
-          currentOperation,
-          admintestAuthorization.value
-        )
-          .then((res) => {
-            if (res.status === 200) {
-              success(
-                currentOperation + " " + currentInstanceId + " successfully !"
-              );
-            }
-          })
-          .finally(() => {
-            API.getInstances(admintestAuthorization.value).then((res) => {
-              // @ts-ignore
-              if (res.status === 200 && res.data) setInstanceList(res.data);
-            });
+      API.putInstance(
+        currentInstanceId,
+        currentOperation,
+        admintestAuthorization
+      )
+        .then((res) => {
+          if (res.status === 200) {
+            success(
+              currentOperation + " " + currentInstanceId + " successfully !"
+            );
+          }
+        })
+        .finally(() => {
+          API.getInstances(admintestAuthorization).then((res) => {
+            // @ts-ignore
+            if (res.status === 200 && res.data) setInstanceList(res.data);
           });
+        });
     }
   };
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
