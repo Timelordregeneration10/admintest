@@ -3,6 +3,8 @@ import API from "../utils/api";
 import serverGetAuth from "../utils/serverGetAuth";
 import MainPage from "./components/mainPage";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const admintestAuthorization = await serverGetAuth();
   const instanceList =
