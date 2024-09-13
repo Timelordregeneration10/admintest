@@ -11,24 +11,33 @@ import {
   TableRow,
   useDisclosure,
 } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCircleStop } from "react-icons/fa6";
 import { MdRestartAlt } from "react-icons/md";
 import { VscDebugStart } from "react-icons/vsc";
 import ConfirmModal from "./confirmModal";
+import { testInstanceList } from "@/app/constants/testInstanceList";
 
 export default function MainPage({
-  InstanceList,
   admintestAuthorization,
 }: {
-  InstanceList: Array<EC2Instance>;
   admintestAuthorization: string;
 }) {
-  const [instanceList, setInstanceList] =
-    useState<Array<EC2Instance>>(InstanceList);
+  const [instanceList, setInstanceList] = useState<Array<EC2Instance>>([]);
   const [title, setTitle] = useState("");
   const [currentInstanceId, setCurrentInstanceId] = useState("");
   const [currentOperation, setCurrentOperation] = useState("");
+
+  const getInstance = async () => {
+    return process.env.NEXT_PUBLIC_TEST === "test"
+      ? testInstanceList
+      : (await API.getInstances(admintestAuthorization)).data;
+  };
+
+  useEffect(() => {
+    //@ts-ignore
+    setInstanceList(getInstance());
+  }, []);
 
   const handlePutInstance = async () => {
     if (process.env.NEXT_PUBLIC_TEST === "test") {

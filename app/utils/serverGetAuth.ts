@@ -1,6 +1,8 @@
 "server only";
 import { cookies } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 export async function serverGetAuth(): Promise<string> {
   const cookie = cookies();
   const admintestAuthorization =
