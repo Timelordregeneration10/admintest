@@ -28,7 +28,7 @@ const LoginCard = () => {
     setIsLoading(true);
     let success = await signInClicked(userName, password);
     if (success) {
-      router.push("/");
+      router.push("/admintest");
     }
     setIsLoading(false);
   };
