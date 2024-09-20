@@ -28,15 +28,19 @@ export default function MainPage({
   const [currentInstanceId, setCurrentInstanceId] = useState("");
   const [currentOperation, setCurrentOperation] = useState("");
 
-  const getInstance = async () => {
+  const getInstance = async() => {
     return process.env.NEXT_PUBLIC_TEST === "test"
       ? testInstanceList
-      : (await API.getInstances(admintestAuthorization)).data;
+      : await API.getInstances(admintestAuthorization);
   };
 
+  const fetchI=async()=>{
+    // @ts-ignore
+    setInstanceList(await getInstance());
+  }
+
   useEffect(() => {
-    //@ts-ignore
-    setInstanceList(getInstance());
+    fetchI();
   }, []);
 
   const handlePutInstance = async () => {
@@ -66,99 +70,104 @@ export default function MainPage({
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
-      <Table
-        aria-label="Example static collection table"
-        className=" max-h-full overflow-scroll no-scrollbar"
-        classNames={{
-          wrapper: " max-h-full overflow-scroll no-scrollbar bg-[#ffffff66]",
-        }}
-        isHeaderSticky={true}
-      >
-        <TableHeader>
-          <TableColumn className="bg-[#ffffffcc]">instanceName</TableColumn>
-          <TableColumn className="bg-[#ffffffcc]">instanceId</TableColumn>
-          <TableColumn className="bg-[#ffffffcc]">imageId</TableColumn>
-          <TableColumn className="bg-[#ffffffcc]">instanceType</TableColumn>
-          <TableColumn className="bg-[#ffffffcc]">
-            instanceStateName
-          </TableColumn>
-          <TableColumn className="bg-[#ffffffcc]">monitoringState</TableColumn>
-          <TableColumn className="bg-[#ffffffcc]">operation</TableColumn>
-        </TableHeader>
-        <TableBody>
-          {instanceList.map((instance, index) => {
-            return (
-              <TableRow key={index}>
-                <TableCell className="p-0">
-                  <div className="p-1 rounded-lg flex items-center justify-start">
-                    {instance.instanceName}
-                  </div>
-                </TableCell>
-                <TableCell className="p-0">
-                  <div className="p-1 rounded-lg flex items-center justify-start">
-                    {instance.instanceId}
-                  </div>
-                </TableCell>
-                <TableCell className="p-0">
-                  <div className="p-1 rounded-lg flex items-center justify-start">
-                    {instance.imageId}
-                  </div>
-                </TableCell>
-                <TableCell className="p-0">
-                  <div className="p-1 rounded-lg flex items-center justify-start">
-                    {instance.instanceType}
-                  </div>
-                </TableCell>
-                <TableCell className="p-0">
-                  <div className="p-1 rounded-lg flex items-center justify-start">
-                    {instance.instanceStateName}
-                  </div>
-                </TableCell>
-                <TableCell className="p-0">
-                  <div className="p-1 rounded-lg flex items-center justify-start">
-                    {instance.monitoringState}
-                  </div>
-                </TableCell>
-                <TableCell className="flex items-center justify-center gap-2">
-                  <VscDebugStart
-                    className="cursor-pointer text-[#2ed7ed]"
-                    onClick={() => {
-                      setCurrentInstanceId(instance.instanceId);
-                      setCurrentOperation("START");
-                      setTitle(
-                        "Are you sure to START " + instance.instanceId + " ?"
-                      );
-                      onOpen();
-                    }}
-                  />
-                  <FaCircleStop
-                    className="cursor-pointer text-[red]"
-                    onClick={() => {
-                      setCurrentInstanceId(instance.instanceId);
-                      setCurrentOperation("STOP");
-                      setTitle(
-                        "Are you sure to STOP " + instance.instanceId + " ?"
-                      );
-                      onOpen();
-                    }}
-                  />
-                  <MdRestartAlt
-                    className="cursor-pointer text-[#197c19]"
-                    onClick={() => {
-                      setCurrentInstanceId(instance.instanceId);
-                      setCurrentOperation("REBOOT");
-                      setTitle(
-                        "Are you sure to REBOOT " + instance.instanceId + " ?"
-                      );
-                      onOpen();
-                    }}
-                  />
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+      {instanceList.length != 0 && (
+        <Table
+          aria-label="Example static collection table"
+          className=" max-h-full overflow-scroll no-scrollbar"
+          classNames={{
+            wrapper: " max-h-full overflow-scroll no-scrollbar bg-[#ffffff66]",
+          }}
+          isHeaderSticky={true}
+        >
+          <TableHeader>
+            <TableColumn className="bg-[#ffffffcc]">instanceName</TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">instanceId</TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">imageId</TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">instanceType</TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">
+              instanceStateName
+            </TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">
+              monitoringState
+            </TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">operation</TableColumn>
+          </TableHeader>
+          <TableBody>
+            {instanceList.map((instance, index) => {
+              return (
+                <TableRow key={index}>
+                  <TableCell className="p-0">
+                    <div className="p-1 rounded-lg flex items-center justify-start">
+                      {instance.instanceName}
+                    </div>
+                  </TableCell>
+                  <TableCell className="p-0">
+                    <div className="p-1 rounded-lg flex items-center justify-start">
+                      {instance.instanceId}
+                    </div>
+                  </TableCell>
+                  <TableCell className="p-0">
+                    <div className="p-1 rounded-lg flex items-center justify-start">
+                      {instance.imageId}
+                    </div>
+                  </TableCell>
+                  <TableCell className="p-0">
+                    <div className="p-1 rounded-lg flex items-center justify-start">
+                      {instance.instanceType}
+                    </div>
+                  </TableCell>
+                  <TableCell className="p-0">
+                    <div className="p-1 rounded-lg flex items-center justify-start">
+                      {instance.instanceStateName}
+                    </div>
+                  </TableCell>
+                  <TableCell className="p-0">
+                    <div className="p-1 rounded-lg flex items-center justify-start">
+                      {instance.monitoringState}
+                    </div>
+                  </TableCell>
+                  <TableCell className="flex items-center justify-center gap-2">
+                    <VscDebugStart
+                      className="cursor-pointer text-[#2ed7ed]"
+                      onClick={() => {
+                        setCurrentInstanceId(instance.instanceId);
+                        setCurrentOperation("START");
+                        setTitle(
+                          "Are you sure to START " + instance.instanceId + " ?"
+                        );
+                        onOpen();
+                      }}
+                    />
+                    <FaCircleStop
+                      className="cursor-pointer text-[red]"
+                      onClick={() => {
+                        setCurrentInstanceId(instance.instanceId);
+                        setCurrentOperation("STOP");
+                        setTitle(
+                          "Are you sure to STOP " + instance.instanceId + " ?"
+                        );
+                        onOpen();
+                      }}
+                    />
+                    <MdRestartAlt
+                      className="cursor-pointer text-[#197c19]"
+                      onClick={() => {
+                        setCurrentInstanceId(instance.instanceId);
+                        setCurrentOperation("REBOOT");
+                        setTitle(
+                          "Are you sure to REBOOT " + instance.instanceId + " ?"
+                        );
+                        onOpen();
+                      }}
+                    />
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      )}
+
       <ConfirmModal
         isOpen={isOpen}
         onOpenChange={onOpenChange}

@@ -87,7 +87,7 @@ async function logoutClicked() {
     Cookies.remove("admintestuserInfo");
     Cookies.remove("admintestAuthorization");
   }
-  window.location.href = "/";
+  window.location.href = "/CodeWeb";
 }
 
 export { logoutClicked, signUpClicked, signInClicked };
