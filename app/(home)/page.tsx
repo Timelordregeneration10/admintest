@@ -1,10 +1,9 @@
 import serverGetAuth from "../utils/serverGetAuth";
 import MainPage from "./components/mainPage";
 
-export const dynamic = "force-static";
-
 export default async function Home() {
-  const admintestAuthorization = await serverGetAuth();
+  // const admintestAuthorization = await serverGetAuth();
+  const admintestAuthorization = "";
 
   return (
     <div className="w-full h-screen p-4 flex justify-center items-center ">
