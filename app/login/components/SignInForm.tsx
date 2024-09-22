@@ -74,7 +74,7 @@ function SignInForm({
       </div>
       <p className="text-center text-small">
         Need to create an account?{" "}
-        <Link size="sm" onPress={() => setSelected("sign-up")} className=" text-[#71F9E1] cursor-pointer">
+        <Link size="sm" onPress={() => setSelected("sign-up")} className=" text-[#0C121C] cursor-pointer">
           Sign up
         </Link>
       </p>

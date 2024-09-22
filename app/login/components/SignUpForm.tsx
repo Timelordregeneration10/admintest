@@ -111,7 +111,7 @@ function SignUpForm({
         <Link
           size="sm"
           onPress={() => setSelected("login")}
-          className=" text-[#71F9E1] cursor-pointer"
+          className=" text-[#0C121C] cursor-pointer"
         >
           Sign in
         </Link>
