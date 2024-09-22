@@ -42,7 +42,11 @@ export default function NavBar({
             onClick={logoutClicked}
           >
             <MdExitToApp />
+<<<<<<< HEAD
             <span>logout</span>
+=======
+            <span>Logout</span>
+>>>>>>> f49aa30bd956cfcaed6de6224d975afcdfdf1c02
           </div>
         </div>
       </div>
