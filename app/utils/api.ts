@@ -15,7 +15,7 @@ const putInstance = async (
   operation: string,
   access_token: string
 ) =>
-  await instance.put<null, AxiosResponse<Partial<any>>>(
+  await instance.put<any, AxiosResponse<Partial<any>>>(
     `/ec2-instances`,
     [{ instanceId, operation }],
     {
