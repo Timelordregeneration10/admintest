@@ -29,7 +29,8 @@ export default function NavBar({
             className="w-full flex gap-2 text-lg items-center cursor-pointer py-2"
             onClick={() => router.push("/")}
           >
-            <span className="font-bold animate-brand">
+            {/* <span className="font-bold animate-brand"> */}
+            <span className="font-bold [text-shadow:2px_2px_2px_#000000]">
               EC2 Instance Manager
             </span>
           </div>
