@@ -26,7 +26,11 @@ async function signUpClicked(
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
+<<<<<<< HEAD
           success("sign up successfully");
+=======
+          success("Signup Success");
+>>>>>>> f49aa30bd956cfcaed6de6224d975afcdfdf1c02
           result = "success";
         }
       })
