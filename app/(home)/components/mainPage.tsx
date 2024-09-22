@@ -125,7 +125,7 @@ export default function MainPage({
                   </TableCell>
                   <TableCell className="flex items-center justify-center gap-2">
                     <VscDebugStart
-                      className="cursor-pointer text-[#2ed7ed]"
+                      className="cursor-pointer text-[#2a4ac1]"
                       onClick={() => {
                         setCurrentInstanceId(instance.instanceId);
                         setCurrentOperation("START");
@@ -147,7 +147,7 @@ export default function MainPage({
                       }}
                     />
                     <MdRestartAlt
-                      className="cursor-pointer text-[#197c19]"
+                      className="cursor-pointer text-[#ff7a28]"
                       onClick={() => {
                         setCurrentInstanceId(instance.instanceId);
                         setCurrentOperation("REBOOT");
