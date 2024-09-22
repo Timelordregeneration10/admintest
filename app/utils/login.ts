@@ -87,7 +87,11 @@ async function logoutClicked() {
     Cookies.remove("admintestuserInfo");
     Cookies.remove("admintestAuthorization");
   }
-  window.location.href = "/CodeWeb";
+  if (process.env.NEXT_PUBLIC_TEST === "test") {
+    window.location.href = "/admintest";
+  } else {
+    window.location.href = "/";
+  }
 }
 
 export { logoutClicked, signUpClicked, signInClicked };

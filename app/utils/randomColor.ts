@@ -25,12 +25,12 @@ export const randomColor = (
     let temp3 = Math.floor(
       Math.random() * (config.end - config.start) + config.start
     );
-    let tempColor = `rgba(${temp1},${temp2},${temp3},${config.opacity})`;
-    if (randomcolor.indexOf(tempColor) != -1) {
-      i--;
-      continue;
-    }
-    randomcolor.push(`rgba(${temp1},${temp2},${temp3},${config.opacity})`);
+    let tempColor = `rgba(${0},${0},${0},${config.opacity})`;
+    // if (randomcolor.indexOf(tempColor) != -1) {
+    //   i--;
+    //   continue;
+    // }
+    randomcolor.push(`rgba(${0},${0},${0},${Math.random()})`);
   }
   return randomcolor;
 };

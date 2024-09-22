@@ -16,7 +16,7 @@ export default function Page() {
 
   useEffect(() => {
     controlScrollTop(window.innerHeight * 1.5);
-  }, [controlScrollTop]);
+  }, []);
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
   // control stickyRef translateX
@@ -75,7 +75,7 @@ export default function Page() {
   // }, [aiyiRems]);
 
   return (
-    <div className="w-full min-h-screen relative bg-[#91bef0]" ref={scrollRef}>
+    <div className="w-full min-h-screen relative " ref={scrollRef}>
       <div
         className={` sticky left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 `}
         style={{

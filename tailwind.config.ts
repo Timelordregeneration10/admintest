@@ -25,71 +25,77 @@ const config: Config = {
         },
         brand: {
           "0%, 100%": {
-            textShadow: "2px 2px 4px violet, -2px -2px 4px #91bef0"
+            textShadow: "2px 2px 4px violet, -2px -2px 4px #91bef0",
           },
           "50%": {
-            textShadow: "2px 2px 10px violet, -2px -2px 10px #91bef0"
+            textShadow: "2px 2px 10px violet, -2px -2px 10px #91bef0",
           },
         },
         bluradd: {
           "0%": {
-            filter: "blur(30px)"
+            filter: "blur(30px)",
           },
 
           "100%": {
-            filter: "blur(300px)"
+            filter: "blur(300px)",
           },
         },
         pinkspread: {
           "0%": {
             clipPath: "polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%)",
-            backgroundColor: "rgb(179, 103, 255)"
+            backgroundColor: "rgba(20,20,20,0.6)",
           },
 
           "25%": {
             clipPath: "polygon(0 0, 30% 0, 60% 0, 40% 40%, 0 60%, 0 30%)",
-            backgroundColor: "rgb(249, 67, 255)"
+            backgroundColor: "rgba(20,20,20,0.8)",
           },
 
           "50%": {
             clipPath: "polygon(0 0, 100% 0, 100% 0, 40% 40%, 0 100%, 0 100%)",
-            backgroundColor: "rgb(255, 67, 189)"
+            backgroundColor: "rgba(20,20,20,1)",
           },
 
           "75%": {
-            clipPath: "polygon(0 0, 100% 0, 100% 30%, 70% 70%, 30% 100%, 0 100%)",
-            backgroundColor: "rgb(255, 104, 129)"
+            clipPath:
+              "polygon(0 0, 100% 0, 100% 30%, 70% 70%, 30% 100%, 0 100%)",
+            backgroundColor: "rgba(20,20,20,0.8)",
           },
 
           "100%": {
-            clipPath: "polygon(0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%, 0 100%)",
-            backgroundColor: "rgb(255, 138, 112)"
+            clipPath:
+              "polygon(0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%, 0 100%)",
+            backgroundColor: "rgba(20,20,20,0.6)",
           },
         },
         bluespread: {
           "0%": {
             clipPath: "polygon(0 0, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)",
-            backgroundColor: "rgb(121, 97, 255)"
+            backgroundColor: "rgba(60,60,60,1)",
           },
 
           "25%": {
-            clipPath: "polygon(40% 40%, 60% 0, 100% 0, 100% 100%, 0 100%, 0 60%)",
-            backgroundColor: "rgb(143, 171, 255)"
+            clipPath:
+              "polygon(40% 40%, 60% 0, 100% 0, 100% 100%, 0 100%, 0 60%)",
+            backgroundColor: "rgba(60,60,60,1)",
           },
 
           "50%": {
-            clipPath: "polygon(40% 40%, 100% 0, 100% 0, 100% 100%, 0 100%, 0 100%)",
-            backgroundColor: "rgb(0, 162, 255)"
+            clipPath:
+              "polygon(40% 40%, 100% 0, 100% 0, 100% 100%, 0 100%, 0 100%)",
+            backgroundColor: "rgba(60,60,60,1)",
           },
 
           "75%": {
-            clipPath: "polygon(70% 70%, 100% 30%, 100% 65%, 100% 100%, 65% 100%, 30% 100%)",
-            backgroundColor: "rgb(0, 255, 255)"
+            clipPath:
+              "polygon(70% 70%, 100% 30%, 100% 65%, 100% 100%, 65% 100%, 30% 100%)",
+            backgroundColor: "rgba(60,60,60,1)",
           },
 
           "100%": {
-            clipPath: "polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%)",
-            backgroundColor: "rgb(23, 158, 255)"
+            clipPath:
+              "polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%)",
+            backgroundColor: "rgba(60,60,60,1)",
           },
         },
       },
@@ -102,7 +108,6 @@ const config: Config = {
       },
     },
   },
-  darkMode: "class",
   plugins: [nextui()],
 };
 export default config;
