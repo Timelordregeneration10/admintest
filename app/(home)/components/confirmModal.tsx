@@ -25,17 +25,23 @@ export default function ConfirmModal({
           <>
             <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
             <ModalFooter>
-              <Button color="danger" variant="flat" onPress={onClose}>
-                取消
+              <Button
+                color="danger"
+                className="bg-[#d9d9d6]"
+                variant="flat"
+                onPress={onClose}
+              >
+                Cancel
               </Button>
               <Button
                 color="primary"
+                className="bg-[#96a8b3]"
                 onPress={() => {
                   handleConfirm();
                   onClose();
                 }}
               >
-                确认
+                Confirm
               </Button>
             </ModalFooter>
           </>

@@ -26,7 +26,7 @@ async function signUpClicked(
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          success("注册成功");
+          success("sign up successfully");
           result = "success";
         }
       })
@@ -56,7 +56,7 @@ async function signInClicked(email: string, password: string) {
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          success("登陆成功");
+          success("login successfully");
           Cookies.set(
             "admintestuserInfo",
             JSON.stringify({
