@@ -42,7 +42,7 @@ export default function NavBar({
             onClick={logoutClicked}
           >
             <MdExitToApp />
-            <span>退出登录</span>
+            <span>Logout</span>
           </div>
         </div>
       </div>

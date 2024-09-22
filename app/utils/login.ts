@@ -26,7 +26,7 @@ async function signUpClicked(
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          success("注册成功");
+          success("Signup Success");
           result = "success";
         }
       })
