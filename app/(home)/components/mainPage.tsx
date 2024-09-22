@@ -77,17 +77,17 @@ export default function MainPage({
           isHeaderSticky={true}
         >
           <TableHeader>
-            <TableColumn className="bg-[#ffffffcc]">instanceName</TableColumn>
-            <TableColumn className="bg-[#ffffffcc]">instanceId</TableColumn>
-            <TableColumn className="bg-[#ffffffcc]">imageId</TableColumn>
-            <TableColumn className="bg-[#ffffffcc]">instanceType</TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">Instance Name</TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">Instance Id</TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">Image Id</TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">Instance Type</TableColumn>
             <TableColumn className="bg-[#ffffffcc]">
-              instanceStateName
+              Instance State Name
             </TableColumn>
             <TableColumn className="bg-[#ffffffcc]">
-              monitoringState
+              Monitoring State
             </TableColumn>
-            <TableColumn className="bg-[#ffffffcc]">operation</TableColumn>
+            <TableColumn className="bg-[#ffffffcc]">Operation</TableColumn>
           </TableHeader>
           <TableBody>
             {instanceList.map((instance, index) => {
