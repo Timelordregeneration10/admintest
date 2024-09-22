@@ -29,18 +29,15 @@ export default function MainPage({
   const [currentOperation, setCurrentOperation] = useState("");
 
   const getInstance = async() => {
-    return process.env.NEXT_PUBLIC_TEST === "test"
+    const res= process.env.NEXT_PUBLIC_TEST === "test"
       ? testInstanceList
-      : await API.getInstances(admintestAuthorization);
+      : (await API.getInstances(admintestAuthorization)).data;
+    // @ts-ignore
+    setInstanceList(res);
   };
 
-  const fetchI=async()=>{
-    // @ts-ignore
-    setInstanceList(await getInstance());
-  }
-
   useEffect(() => {
-    fetchI();
+    getInstance();
   }, []);
 
   const handlePutInstance = async () => {
